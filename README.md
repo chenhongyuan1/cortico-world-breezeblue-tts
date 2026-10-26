@@ -31,6 +31,17 @@ Coopanion BreezeBlue / MiniMax 气泡朗读，支持演绎控制和 Windows 系�
 
 ## BreezeBlue 配置
 
+### 1. 获取 API Key
+
+1. 打开 [BreezeBlue 平台首页](https://breezeblue.ai/app/home)，注册或登录账号。
+2. 打开 [API Keys 管理页](https://breezeblue.ai/app/developer/api-keys)，点击 **Create API key**。
+3. 为密钥填写一个便于识别的名称，例如 `Coopanion TTS`，创建后立即复制并保存完整 API Key。官方只在创建或轮换时显示完整密钥，之后无法再次查看。
+4. 语音合成会消耗账户额度；如果设置了密钥预算，也需要确保该预算允许合成。额度和价格以平台当前页面为准。
+
+操作依据：[官方快速开始](https://docs.breezeblue.ai/quickstart)、[API Key 与鉴权说明](https://docs.breezeblue.ai/authentication)。
+
+### 2. 在 Coopanion 中使用密钥
+
 1. 在当前部署目录（含 `config.json` 的目录）创建或编辑 `.env`，合并 `breeze.env.example` 中的变量：
 
    ```dotenv
@@ -43,13 +54,23 @@ Coopanion BreezeBlue / MiniMax 气泡朗读，支持演绎控制和 Windows 系�
 「密钥变量名」通常留空。它只接收 `BREEZE_API_KEY` 这样的名称；不要在该栏粘贴密钥本身。
 `.env` 和表单参数每次朗读重新读取；新增或修改系统环境变量后通常需要重启 Coopanion。
 
-在包目录中查询音色，`--data` 指向你的部署目录：
+### 3. 获取音色 ID
+
+API Key 和音色 ID 分别填写：API Key 放入 `.env`，音色 ID 填入扩展配置页的「BreezeBlue 音色 ID」。在包目录中查询账户可用音色，`--data` 指向你的部署目录：
 
 ```powershell
 node scripts/breeze-probe.mjs --data "<部署目录>" --voices --language zh
 ```
 
-去掉 `--language zh` 查所有语言。返回下一页标记时，使用 `--page-token` 传入 `nextPageToken`。
+从返回的列表中选择一个音色，将其 `id`（通常形如 `voc_...`）复制到配置页。去掉 `--language zh` 查所有语言。返回下一页标记时，使用 `--page-token` 传入 `nextPageToken`。
+
+密钥和音色配置完成后，可运行离线状态检查：
+
+```powershell
+node scripts/breeze-probe.mjs --data "<部署目录>"
+```
+
+`configured: true` 表示已读到密钥，`ready: true` 表示密钥和音色 ID 均已填写；它们不代表已验证服务端授权，真实试听命令见下方「测试与诊断」。
 
 ## 参数
 
