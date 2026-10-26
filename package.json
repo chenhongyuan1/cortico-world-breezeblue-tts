@@ -1,0 +1,59 @@
+{
+  "name": "cortico-world-breezeblue-tts",
+  "version": "0.1.1",
+  "type": "module",
+  "description": "Coopanion BreezeBlue / MiniMax 气泡朗读，支持演绎控制和 Windows 系统语音回退，使用云端api连接",
+  "license": "MIT",
+  "keywords": [
+    "cortico-world",
+    "cortico",
+    "coopanion",
+    "tts",
+    "minimax",
+    "breezeblue",
+    "desktop-pet"
+  ],
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src",
+    "scripts",
+    "README.md",
+    "LICENSE",
+    "NOTICE.md",
+    "PRIVACY.md",
+    "breeze.env.example",
+    "icon.svg"
+  ],
+  "scripts": {
+    "selftest": "node scripts/selftest.mjs",
+    "test": "node scripts/test-watcher.mjs && node scripts/test-secrets.mjs && node scripts/test-breeze.mjs",
+    "breeze": "node scripts/breeze-probe.mjs",
+    "probe": "node scripts/minimax-probe.mjs --net",
+    "voices": "node scripts/list-voices.mjs"
+  },
+  "cortico": {
+    "kind": "world",
+    "api": 6,
+    "displayName": "BreezeBlue 气泡朗读",
+    "icon": "icon.svg"
+  },
+  "author": "星云",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chenhongyuan1/cortico-world-breezeblue-tts.git"
+  },
+  "homepage": "https://github.com/chenhongyuan1/cortico-world-breezeblue-tts#readme",
+  "bugs": {
+    "url": "https://github.com/chenhongyuan1/cortico-world-breezeblue-tts/issues"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
