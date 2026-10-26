@@ -1,8 +1,8 @@
 {
   "name": "cortico-world-breezeblue-tts",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
-  "description": "Coopanion BreezeBlue / MiniMax 气泡朗读，支持演绎控制和 Windows 系统语音回退，使用云端api连接",
+  "description": "Coopanion BreezeBlue / MiniMax 气泡朗读，支持演绎控制和 Windows 系统语音回退，使用云端api连接。详细配置请点击GitHub仓库链接。",
   "license": "MIT",
   "keywords": [
     "cortico-world",
